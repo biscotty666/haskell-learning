@@ -8,6 +8,9 @@ compareWithHundred :: (Num a, Ord a) => a -> Ordering
 -- compareWithHundred x = compare 100 x
 compareWithHundred = compare 100
 
+divideByNine :: (Floating a) => a -> a
+divideByNine = (/9)
+
 divideByTen :: (Floating a) => a -> a
 divideByTen = (/10)
 
@@ -18,8 +21,8 @@ applyTwice :: (a -> a) -> a -> a
 applyTwice f x = f (f x)
 
 zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith' _ [] _ = []
-zipWith' _ _ [] = []
+zipWith' _ [] _          = []
+zipWith' _ _ []          = []
 zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
 
 flip' :: (a -> b -> c) -> (b -> a -> c)
@@ -28,14 +31,14 @@ flip' f y x = f x y
 
 -- quicksort :: (Ord a) => [a] -> [a]
 -- quicksort [] = []
--- quicksort (x:xs) = 
+-- quicksort (x:xs) =
 --     let smallerSorted = quicksort [a | a <- xs, a <= x]
 --         biggerSorted = quicksort [a | a <- xs, a > x]
 --     in smallerSorted ++ [x] ++ biggerSorted
 
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
-quicksort (x:xs) = 
+quicksort (x:xs) =
     let smallerSorted = quicksort (filter (<=x) xs)
         biggerSorted = quicksort (filter (>x) xs)
     in smallerSorted ++ [x] ++ biggerSorted
@@ -50,17 +53,17 @@ sumOddSquares :: (Integral a) => a
 sumOddSquares = sum (takeWhile (< 10000) (filter odd (map (^2) [1..])))
 
 {- Collatz sequences
- We take a natural number. If that number is even, we divide it by two. 
- If it's odd, we multiply it by 3 and then add 1 to that. 
+ We take a natural number. If that number is even, we divide it by two.
+ If it's odd, we multiply it by 3 and then add 1 to that.
  We take the resulting number and apply the same thing to it,
- which produces a new number and so on. In essence, we get a chain 
- of numbers. It is thought that for all starting numbers, the 
- chains finish at the number 1. So if we take the starting number 13, 
+ which produces a new number and so on. In essence, we get a chain
+ of numbers. It is thought that for all starting numbers, the
+ chains finish at the number 1. So if we take the starting number 13,
  we get this sequence: 13, 40, 20, 10, 5, 16, 8, 4, 2, 1. 13*3 + 1
  equals 40. 40 divided by 2 is 20, etc. We see that the chain has 10 terms.
 
- Now what we want to know is this: for all starting numbers between 1 and 100, 
- how many chains have a length greater than 15? First off, we'll 
+ Now what we want to know is this: for all starting numbers between 1 and 100,
+ how many chains have a length greater than 15? First off, we'll
  write a function that produces a chain:
 -}
 
@@ -92,8 +95,8 @@ flip'' f = \x y -> f y x
 sum' :: (Num a) => [a] -> a
 sum' xs = foldl (\acc x -> acc + x) 0 xs
 
--- The lambda function (\acc x -> acc + x) is the same as (+). 
--- We can omit the xs as the parameter because calling foldl (+) 0 
+-- The lambda function (\acc x -> acc + x) is the same as (+).
+-- We can omit the xs as the parameter because calling foldl (+) 0
 -- will return a function that takes a list.
 
 sum'' :: (Num a) => [a] -> a
@@ -102,9 +105,9 @@ sum'' = foldl (+) 0
 elem' :: (Eq a) => a -> [a] -> Bool
 elem' y ys = foldl (\acc x -> if x == y then True else acc) False ys
 
--- the left fold's binary function has the accumulator as the first parameter 
--- and the current value as the second one (so \acc x -> ...), the right fold's 
--- binary function has the current value as the first parameter and the 
+-- the left fold's binary function has the accumulator as the first parameter
+-- and the current value as the second one (so \acc x -> ...), the right fold's
+-- binary function has the current value as the first parameter and the
 -- accumulator as the second one (so \x acc -> ...).
 
 map' :: (a -> b) -> [a] -> [b]
@@ -133,7 +136,7 @@ sqrtSums = length (takeWhile (<1000) (scanl1 (+) (map sqrt [1..]))) + 1
 
 {-
  dollar operator
- sqrt (3 + 4 + 9) is the same as sqrt $ 3 + 4 + 9 because $ has 
+ sqrt (3 + 4 + 9) is the same as sqrt $ 3 + 4 + 9 because $ has
  the lowest precedence of any operator.
 -}
 
