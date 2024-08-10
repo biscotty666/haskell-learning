@@ -1,5 +1,8 @@
 import System.IO
 
+main :: IO ()
+main = hangman
+
 getCh :: IO Char
 getCh = do hSetEcho stdin False
            x <- getChar
