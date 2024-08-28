@@ -29,12 +29,6 @@ flip' :: (a -> b -> c) -> (b -> a -> c)
 flip' f y x = f x y
 
 
--- quicksort :: (Ord a) => [a] -> [a]
--- quicksort [] = []
--- quicksort (x:xs) =
---     let smallerSorted = quicksort [a | a <- xs, a <= x]
---         biggerSorted = quicksort [a | a <- xs, a > x]
---     in smallerSorted ++ [x] ++ biggerSorted
 
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
@@ -139,5 +133,3 @@ sqrtSums = length (takeWhile (<1000) (scanl1 (+) (map sqrt [1..]))) + 1
  sqrt (3 + 4 + 9) is the same as sqrt $ 3 + 4 + 9 because $ has
  the lowest precedence of any operator.
 -}
-
-
