@@ -16,3 +16,9 @@ upCase s = (map toUpper s, "upCase ")
 
 toWords :: String -> Writer [String]
 toWords s = (words s, "toWords ")
+
+process :: String -> Writer [String]
+process = upCase >=> toWords
+
+string1 :: String
+string1 = "Hello there Matey"
