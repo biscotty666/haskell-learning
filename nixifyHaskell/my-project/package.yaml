@@ -1,0 +1,13 @@
+name:                my-project
+version:             1.0.0.0
+author:              biscotty666
+maintainer:          biscotty666@gmail.com
+copyright:           "MIT"
+
+dependencies:
+  - base
+  - bytestring
+
+
+library:
+  source-dirs: src

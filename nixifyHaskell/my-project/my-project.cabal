@@ -1,0 +1,25 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           my-project
+version:        1.0.0.0
+author:         biscotty666
+maintainer:     biscotty666@gmail.com
+copyright:      MIT
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+
+library
+  exposed-modules:
+      Main
+  other-modules:
+      Paths_my_project
+  hs-source-dirs:
+      src
+  build-depends:
+      base
+  default-language: Haskell2010
