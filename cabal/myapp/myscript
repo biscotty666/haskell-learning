@@ -1,0 +1,11 @@
+#!/usr/bin/env cabal
+{- cabal:
+build-depends:
+    base ^>=4.18.2.1,
+    haskell-say ^>=1.0.0.0
+-}
+
+import HaskellSay (haskellSay)
+
+main :: IO ()
+main = haskellSay "Hello, Haskell"
